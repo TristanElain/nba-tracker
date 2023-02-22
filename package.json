@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-ghpages": "ng build --configuration production --base-href https://TristanElain.github.io/nba-tracker/",
+    "deploy-ghpages": "npx angular-cli-ghpages --dir=dist/nba-tracker/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
