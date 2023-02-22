@@ -41,7 +41,7 @@ export class GameService {
   }
 
   public getScore(game: Game, team: Team): number {
-    if(game.home_team.id === team.id) {
+    if (game.home_team.id === team.id) {
       return game.home_team_score;
     }
 
@@ -49,7 +49,7 @@ export class GameService {
   }
 
   public getOpposingScore(game: Game, team: Team): number {
-    if(game.home_team.id === team.id) {
+    if (game.home_team.id === team.id) {
       return game.visitor_team_score;
     }
 
@@ -58,6 +58,5 @@ export class GameService {
 
   public hasWon(game: Game, team: Team): boolean {
     return this.getScore(game, team) > this.getOpposingScore(game, team);
-
   }
 }

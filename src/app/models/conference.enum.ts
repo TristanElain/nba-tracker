@@ -1,4 +1,4 @@
 export enum Conference {
-    EAST = 'East',
-    WEST = 'West',
+  EAST = 'East',
+  WEST = 'West',
 }

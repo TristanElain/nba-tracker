@@ -29,7 +29,13 @@ import { ResultsComponent } from './pages/results/results.component';
     ReactiveFormsModule,
     PipesModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: NbaHeadersInterceptor, multi: true,}],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NbaHeadersInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

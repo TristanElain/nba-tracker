@@ -2,13 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Conference } from 'src/app/models';
 
 @Pipe({
-  name: 'appConference'
+  name: 'appConference',
 })
 export class ConferencePipe implements PipeTransform {
-
   transform(value: Conference): string {
     let conference: string;
-    switch(value) {
+    switch (value) {
       case Conference.EAST:
         conference = 'Eastern';
         break;
@@ -16,11 +15,10 @@ export class ConferencePipe implements PipeTransform {
       case Conference.WEST:
         conference = 'Western';
         break;
-      
-        default:
-          conference = 'Unknown';
+
+      default:
+        conference = 'Unknown';
     }
     return `${conference} conference`;
   }
-
 }

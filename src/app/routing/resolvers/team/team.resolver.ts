@@ -3,8 +3,8 @@ import { ResolveFn } from '@angular/router';
 import { Team } from 'src/app/models';
 import { TeamService } from 'src/app/services';
 
-export const teamResolver: ResolveFn<Team | null> = (route, state) => {
+export const teamResolver: ResolveFn<Team | null> = route => {
   const teamService = inject(TeamService);
-  const {teamId} = route.params;
+  const { teamId } = route.params;
   return teamService.get(teamId);
 };

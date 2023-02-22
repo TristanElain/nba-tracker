@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Game, Team } from 'src/app/models';
 import { GameService } from 'src/app/services';
 
@@ -27,7 +33,7 @@ export class TeamListItemComponent {
       return;
     }
 
-    const sums: {conceded: number, scored: number} = games.reduce(
+    const sums: { conceded: number; scored: number } = games.reduce(
       (sums, currentGame) => {
         const pointScored = this.gameService.getScore(currentGame, this.team);
         const pointConceded = this.gameService.getOpposingScore(
@@ -50,7 +56,6 @@ export class TeamListItemComponent {
   get games(): Game[] | null {
     return this.innerGames;
   }
-
 
   @Output() remove = new EventEmitter<void>();
 

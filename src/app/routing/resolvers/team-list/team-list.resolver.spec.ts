@@ -5,8 +5,10 @@ import { Team } from 'src/app/models/team.model';
 import { teamListResolver } from './team-list.resolver';
 
 describe('teamListResolver', () => {
-  const executeResolver: ResolveFn<Team[]> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => teamListResolver(...resolverParameters));
+  const executeResolver: ResolveFn<Team[]> = (...resolverParameters) =>
+    TestBed.runInInjectionContext(() =>
+      teamListResolver(...resolverParameters)
+    );
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

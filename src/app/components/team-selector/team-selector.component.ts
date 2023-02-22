@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Team } from 'src/app/models/team.model';
 
@@ -6,11 +12,11 @@ import { Team } from 'src/app/models/team.model';
   selector: 'app-team-selector',
   templateUrl: './team-selector.component.html',
   styleUrls: ['./team-selector.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamSelectorComponent {
   @Input() set teams(teams: Team[]) {
-    this.innerTeams = teams.sort((a, b) => a.name.localeCompare(b.name))
+    this.innerTeams = teams.sort((a, b) => a.name.localeCompare(b.name));
   }
   get teams(): Team[] {
     return this.innerTeams;
@@ -27,7 +33,7 @@ export class TeamSelectorComponent {
     if (null === this.control.value) {
       return;
     }
-    
+
     this.selected.emit(this.control.value);
   }
 }
