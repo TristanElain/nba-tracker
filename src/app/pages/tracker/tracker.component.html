@@ -1,4 +1,3 @@
-<p>tracker works!</p>
 <app-team-selector [teams]="teams" (selected)="teamSelected($event)"></app-team-selector>
 <br/>
-<app-team-list [teams]="selectedTeams" [games]="games"></app-team-list>
+<app-team-list [teams]="selectedTeams" [games]="games" (remove)="removeTeam($event)"></app-team-list>

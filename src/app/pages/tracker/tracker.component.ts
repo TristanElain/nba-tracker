@@ -28,4 +28,10 @@ export class TrackerComponent implements OnInit {
     this.selectedTeams = [...new Set([...this.selectedTeams, team])];
     this.games = {...this.games, [team.id]: this.gameService.lastTwelveDays(team.id)};
   }
+
+  removeTeam(team: Team) {
+    const teamsSet = new Set(this.selectedTeams);
+    teamsSet.delete(team);
+    this.selectedTeams = [...teamsSet];
+  }
 }

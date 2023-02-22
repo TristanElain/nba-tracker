@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Game, Team } from 'src/app/models';
 import { GameService } from 'src/app/services';
 
@@ -50,6 +50,11 @@ export class TeamListItemComponent {
   get games(): Game[] | null {
     return this.innerGames;
   }
+
+
+  @Output() remove = new EventEmitter<void>();
+
+  @Output() seeResults = new EventEmitter<void>();
 
   protected logoUrl = '';
   protected averageScored: number | null = null;

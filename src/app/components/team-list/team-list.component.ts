@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Game, Team } from 'src/app/models';
 
@@ -12,6 +12,10 @@ export class TeamListComponent {
   @Input() teams: Team[] = [];
 
   @Input() games!: {[key: number]: Observable<Game[]>};
+
+  @Output() remove = new EventEmitter<Team>();
+
+  @Output() seeResults = new EventEmitter<Team>();
 
   protected trackById<T extends {id: number}>(index: number, value: T) {
     return value.id;

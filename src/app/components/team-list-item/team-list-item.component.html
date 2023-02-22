@@ -5,7 +5,7 @@
         <h2 class="title">{{ team.full_name }} [{{ team.abbreviation }}]</h2>
         <span class="conference">{{ team.conference | appConference }}</span>
       </div>
-      <button>x</button>
+      <button [attr.id]="'remove' + team.abbreviation" (click)="remove.emit()">X</button>
     </div>
     <hr/>
     <div class="content">
@@ -19,22 +19,22 @@
           <div class="result-list">
             <ng-container *ngFor="let game of games">
               <i [ngClass]="(game | appGameResult : team) ? 'won' : 'lost'">{{
-                (game | appGameResult : team) ? 'W' : 'LF'
+                (game | appGameResult : team) ? 'W' : 'L'
               }}</i>
             </ng-container>
           </div>
           <span class="avg-scored"
-            >Avg pts scored: <b>{{ averageScored }}</b></span
+            >Avg pts scored: <b>{{ averageScored | number: '1.0-0'}}</b></span
           >
           <span class="avg-conceded"
-            >Avg pts conceded: <b>{{ averageConceded }}</b></span
+            >Avg pts conceded: <b>{{ averageConceded | number: '1.0-0' }}</b></span
           >
         </ng-container>
       </div>
       <img class="logo" [src]="logoUrl" />
     </div>
   </div>
-  <button>Go to detail ></button>
+  <button [attr.id]="'result' + team.abbreviation" (click)="seeResults.emit()">See game results ></button>
 </div>
 
 <ng-template #result let-value let-class></ng-template>
