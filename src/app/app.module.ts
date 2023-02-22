@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routing';
 import { AppComponent } from './app.component';
+import { TrackerComponent } from './pages/tracker/tracker.component';
+import { TeamSelectorComponent } from './components/team-selector/team-selector.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NbaHeadersInterceptor } from './interceptors';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamSelectorComponent,
+    TrackerComponent,
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: NbaHeadersInterceptor, multi: true,}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
