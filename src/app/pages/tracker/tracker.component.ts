@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Team } from 'src/app/models/team.model';
+import { Observable } from 'rxjs';
+import { Game, Team } from 'src/app/models';
+import { GameService } from 'src/app/services';
 
 @Component({
   templateUrl: './tracker.component.html',
@@ -9,9 +11,11 @@ import { Team } from 'src/app/models/team.model';
 export class TrackerComponent implements OnInit {
   protected teams: Team[] = [];
 
-  protected selectedTeams: Set<Team> = new Set();
+  protected selectedTeams: Team[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  protected games: {[teamId: number]: Observable<Game[]>} = {};
+
+  constructor(private route: ActivatedRoute, private gameService: GameService) {}
 
   ngOnInit(): void {
       this.route.data.subscribe(data => {
@@ -21,6 +25,7 @@ export class TrackerComponent implements OnInit {
   }
 
   teamSelected(team: Team) {
-    this.selectedTeams.add(team);
+    this.selectedTeams = [...new Set([...this.selectedTeams, team])];
+    this.games = {...this.games, [team.id]: this.gameService.lastTwelveDays(team.id)};
   }
 }

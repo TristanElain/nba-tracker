@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="container">
+    <div class="header">
+      <div>
+        <h2 class="title">{{ team.full_name }} [{{ team.abbreviation }}]</h2>
+        <span class="conference">{{ team.conference | appConference }}</span>
+      </div>
+      <button>x</button>
+    </div>
+    <hr/>
+    <div class="content">
+      <div class="last-results">
+        <span>Results of the past twelve days</span>
+        <ng-container *ngIf="!games">Loading ...</ng-container>
+        <ng-container *ngIf="games && !games.length"
+          >No game played the last 12 days</ng-container
+        >
+        <ng-container *ngIf="games?.length">
+          <div class="result-list">
+            <ng-container *ngFor="let game of games">
+              <i [ngClass]="(game | appGameResult : team) ? 'won' : 'lost'">{{
+                (game | appGameResult : team) ? 'W' : 'LF'
+              }}</i>
+            </ng-container>
+          </div>
+          <span class="avg-scored"
+            >Avg pts scored: <b>{{ averageScored }}</b></span
+          >
+          <span class="avg-conceded"
+            >Avg pts conceded: <b>{{ averageConceded }}</b></span
+          >
+        </ng-container>
+      </div>
+      <img class="logo" [src]="logoUrl" />
+    </div>
+  </div>
+  <button>Go to detail ></button>
+</div>
+
+<ng-template #result let-value let-class></ng-template>

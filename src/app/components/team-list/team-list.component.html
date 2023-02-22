@@ -1,0 +1,1 @@
+<app-team-list-item class="list-item" *ngFor="let team of teams; trackBy: trackById" [team]="team" [games]="games[team.id] | async"></app-team-list-item>

@@ -11,7 +11,7 @@ import { Team } from 'src/app/models/team.model';
 export class TeamSelectorComponent {
   @Input() set teams(teams: Team[]) {
     this.innerTeams = teams.sort((a, b) => a.name.localeCompare(b.name))
-  };
+  }
   get teams(): Team[] {
     return this.innerTeams;
   }
