@@ -1,6 +1,6 @@
 <select id="teamSelect" [formControl]="control">
   <option [value]="null">Select a team.</option>
-  <option *ngFor="let team of teams" [ngValue]="team">{{ team.name }}</option>
+  <option *ngFor="let team of teams" [ngValue]="team">{{ team.full_name }}</option>
 </select>
 <button id="trackBtn" [disabled]="!control.value" (click)="select()">
   Track team

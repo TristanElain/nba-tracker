@@ -3,7 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  Output,
+  Output
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Team } from 'src/app/models/team.model';
@@ -16,7 +16,7 @@ import { Team } from 'src/app/models/team.model';
 })
 export class TeamSelectorComponent {
   @Input() set teams(teams: Team[]) {
-    this.innerTeams = teams.sort((a, b) => a.name.localeCompare(b.name));
+    this.innerTeams = teams.sort((a, b) => a.full_name.localeCompare(b.full_name));
   }
   get teams(): Team[] {
     return this.innerTeams;
