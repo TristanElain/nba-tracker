@@ -26,15 +26,22 @@ export class TrackerComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.teams = data['teams'];
       const locationState = this.location.getState();
-      if (locationState && 'object' === typeof locationState && 'selectedTeams' in locationState) {
+      if (
+        locationState &&
+        'object' === typeof locationState &&
+        'selectedTeams' in locationState
+      ) {
         this.selectedTeams = locationState.selectedTeams as Team[];
-        this.selectedTeams.forEach(team => {this.addGames(team)})
+        this.selectedTeams.forEach(team => {
+          this.addGames(team);
+        });
       }
     });
   }
 
   protected teamSelected(team: Team): void {
     this.selectedTeams = [...new Set([...this.selectedTeams, team])];
+    this.addGames(team);
     this.updateLocation();
   }
 
@@ -53,11 +60,13 @@ export class TrackerComponent implements OnInit {
     };
   }
 
-  private deleteGames(team: Team) {
+  private deleteGames(team: Team): void {
     delete this.games[team.id];
   }
 
-  private updateLocation() {
-    this.location.replaceState(this.location.path(), undefined, { selectedTeams: this.selectedTeams })
+  private updateLocation(): void {
+    this.location.replaceState(this.location.path(), undefined, {
+      selectedTeams: this.selectedTeams,
+    });
   }
 }
