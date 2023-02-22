@@ -11,6 +11,7 @@ import { NbaHeadersInterceptor } from './interceptors';
 import { TrackerComponent } from './pages/tracker/tracker.component';
 import { PipesModule } from './pipes';
 import { AppRoutingModule } from './routing';
+import { ResultsComponent } from './pages/results/results.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppRoutingModule } from './routing';
     TrackerComponent,
     TeamListComponent,
     TeamListItemComponent,
+    ResultsComponent,
   ],
   imports: [
     AppRoutingModule,

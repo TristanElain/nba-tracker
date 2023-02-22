@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { format } from 'date-fns';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { ApiResponse, Game, Team } from 'src/app/models';
+import { ApiListResponse, Game, Team } from 'src/app/models';
 import { API_BASE_URL } from '../constants';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class GameService {
       .map(date => format(date, 'yyyy-MM-dd'));
 
     return this.http
-      .get<ApiResponse<Game[]>>(`${API_BASE_URL}/games`, {
+      .get<ApiListResponse<Game[]>>(`${API_BASE_URL}/games`, {
         params: {
           'team_ids[]': teamId,
           'dates[]': dateParams,

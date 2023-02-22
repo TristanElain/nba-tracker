@@ -15,8 +15,6 @@ export class TeamListComponent {
 
   @Output() remove = new EventEmitter<Team>();
 
-  @Output() seeResults = new EventEmitter<Team>();
-
   protected trackById<T extends {id: number}>(index: number, value: T) {
     return value.id;
   }

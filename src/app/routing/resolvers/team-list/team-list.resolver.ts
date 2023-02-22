@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Team } from 'src/app/models/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
 
-export const teamResolver: ResolveFn<Team[]> = (): Observable<Team[]> => {
+export const teamListResolver: ResolveFn<Team[]> = (): Observable<Team[]> => {
   const teamService = inject(TeamService);
   return teamService.getAll();
 };

@@ -54,8 +54,6 @@ export class TeamListItemComponent {
 
   @Output() remove = new EventEmitter<void>();
 
-  @Output() seeResults = new EventEmitter<void>();
-
   protected logoUrl = '';
   protected averageScored: number | null = null;
   protected averageConceded: number | null = null;

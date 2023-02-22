@@ -5,9 +5,11 @@
         <h2 class="title">{{ team.full_name }} [{{ team.abbreviation }}]</h2>
         <span class="conference">{{ team.conference | appConference }}</span>
       </div>
-      <button [attr.id]="'remove' + team.abbreviation" (click)="remove.emit()">X</button>
+      <button [attr.id]="'remove' + team.abbreviation" (click)="remove.emit()">
+        X
+      </button>
     </div>
-    <hr/>
+    <hr />
     <div class="content">
       <div class="last-results">
         <span>Results of the past twelve days</span>
@@ -24,17 +26,23 @@
             </ng-container>
           </div>
           <span class="avg-scored"
-            >Avg pts scored: <b>{{ averageScored | number: '1.0-0'}}</b></span
+            >Avg pts scored: <b>{{ averageScored | number : '1.0-0' }}</b></span
           >
           <span class="avg-conceded"
-            >Avg pts conceded: <b>{{ averageConceded | number: '1.0-0' }}</b></span
+            >Avg pts conceded:
+            <b>{{ averageConceded | number : '1.0-0' }}</b></span
           >
         </ng-container>
       </div>
       <img class="logo" [src]="logoUrl" />
     </div>
   </div>
-  <button [attr.id]="'result' + team.abbreviation" (click)="seeResults.emit()">See game results ></button>
+  <button
+    [attr.id]="'result' + team.abbreviation"
+    [routerLink]="['results', team.id]"
+  >
+    See game results >
+  </button>
 </div>
 
 <ng-template #result let-value let-class></ng-template>

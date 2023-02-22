@@ -4,5 +4,4 @@
   [team]="team"
   [games]="games[team.id] | async"
   (remove)="remove.emit(team)"
-  (seeResults)="seeResults.emit(team)"
 ></app-team-list-item>

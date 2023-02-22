@@ -1,9 +1,9 @@
-export interface ApiResponse<T = unknown> {
+export interface ApiListResponse<T = unknown> {
     data: T;
-    meta: ApiResponseMeta;
+    meta: ApiListResponseMeta;
 }
 
-interface ApiResponseMeta {
+interface ApiListResponseMeta {
     total_pages: number;
     current_page: number;
     next_page: number;
